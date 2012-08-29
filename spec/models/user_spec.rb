@@ -8,6 +8,7 @@ describe User do
 
   subject { @user }
 
+
   it { should respond_to(:name) }
   it { should respond_to(:email) }
   it { should respond_to(:password_digest) }
@@ -31,6 +32,25 @@ describe User do
 
     it { should be_admin }
   end
+
+  # describe "admin mass assignment security check" do
+
+  #   describe "should not set admin role" do
+  #     before do
+  #      @user.update_attributes(admin: true)
+  #      @user.save!
+  #    end
+  #     it { should_not be_admin }
+  #   end
+
+  #   describe "should set admin role" do
+  #     before do 
+  #       @user.admin = true
+  #       @user.save!
+  #     end
+  #     it { should be_admin }
+  #   end
+  # end
 
   describe "when name is not present" do
     before { @user.name = " " }
