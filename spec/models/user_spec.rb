@@ -33,24 +33,23 @@ describe User do
     it { should be_admin }
   end
 
-  # describe "admin mass assignment security check" do
+  describe "admin mass assignment security check" do
 
-  #   describe "should not set admin role" do
-  #     before do
-  #      @user.update_attributes(admin: true)
-  #      @user.save!
-  #    end
-  #     it { should_not be_admin }
-  #   end
+    describe "should not set admin role" do
+      it "should check for mass assignment error" do
+        lambda { @user.update_attributes(admin: true) }.should raise_error(/Can't mass-assign protected attributes/)
+        @user.should_not be_admin
+      end
+    end
 
-  #   describe "should set admin role" do
-  #     before do 
-  #       @user.admin = true
-  #       @user.save!
-  #     end
-  #     it { should be_admin }
-  #   end
-  # end
+    describe "should set admin role" do
+      before do 
+        @user.admin = true
+        @user.save!
+      end
+      it { should be_admin }
+    end
+  end
 
   describe "when name is not present" do
     before { @user.name = " " }
