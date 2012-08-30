@@ -168,6 +168,14 @@ footer {
   @include box_sizing;
 }
 
+.clear {
+  clear: both;
+}
+
+.float_left {
+  float: left;
+}
+
 /* sidebar */
 
 aside {
